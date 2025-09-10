@@ -101,3 +101,9 @@ with open('text.txt', 'r') as file:
         for line in reversed(content):
             writer.write(line)
 
+jas = [1,0,4,6,8,0,3,0,2]
+for jas1 in jas:
+    if jas1 == 0:
+        jas.remove(jas1)
+        jas.append(jas1)
+print(jas)
