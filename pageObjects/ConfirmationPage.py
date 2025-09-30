@@ -8,7 +8,7 @@ from Utils.Utilities import Utilities
 
 class ConfirmationPage(Utilities):
     def __init__(self,driver):
-        super().__init__(driver,timeout=5)
+        super().__init__(driver,timeout=10)
         self.driver = driver
         #self.wait_utils = WaitUtils(driver,timeout=5)
         self.country_input = (By.ID, "country")
