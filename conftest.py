@@ -1,6 +1,7 @@
 import pytest
 import yaml
 from selenium import webdriver
+driver = None
 
 def pytest_addoption(parser):
     parser.addoption("--browser_name", action="store", default="firefox", help="browser selection")
