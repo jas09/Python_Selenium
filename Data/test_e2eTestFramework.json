@@ -3,22 +3,26 @@
     {
       "userEmail" :"rahulshettyacademy",
       "userPassword": "learning",
-      "productName" : "Blackberry"
+      "productName" : "Blackberry",
+      "countryName" : "ind"
     },
     {
       "userEmail" :"rahulshettyacademy",
       "userPassword": "learning",
-      "productName" : "Samsung Note 8"
+      "productName" : "Samsung Note 8",
+      "countryName" : "ind"
     },
     {
       "userEmail" :"rahulshettyacademy",
       "userPassword": "learning",
-      "productName" : "Nokia Edge"
+      "productName" : "Nokia Edge",
+      "countryName" : "ind"
     },
     {
       "userEmail" :"rahulshettyacademy",
       "userPassword": "learning",
-      "productName" : "iphone X"
+      "productName" : "iphone X",
+      "countryName" : "ind"
     }
   ]
 }
