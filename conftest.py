@@ -24,6 +24,7 @@ URL_MAP = {"GREENKART": "https://rahulshettyacademy.com/seleniumPractise/#/",
 
 @pytest.fixture(scope="function")
 def browserInstance(request):
+    global driver
     browser_name = request.config.getoption("browser_name")
     url_key = request.config.getoption("url_key")
     base_url = URL_MAP.get(url_key)
