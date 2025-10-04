@@ -23,19 +23,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 // Write Allure *results* to allure-results (not allure-report)
-                //bat 'python -m pytest --alluredir=allure-results'
-                bat '''
-                echo "PYTHON PATH:"
-                where python
-                python --version
-                pip list
-                echo "CURRENT DIR:"
-                cd
-                echo "TEST FILES:"
-                dir /b /s *test*.py
-                echo "RUNNING PYTEST..."
-                pytest -vv --maxfail=1 --disable-warnings --alluredir=allure-results
-                '''
+                bat 'python -m pytest --alluredir=allure-results'
             }
         }
 
