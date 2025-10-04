@@ -7,7 +7,7 @@ driver = None
 
 def pytest_addoption(parser):
     parser.addoption("--browser_name", action="store", default="IE", help="browser selection")
-    parser.addoption("--url_key", action="store", default="GREENKART", help="Choose URL key")
+    parser.addoption("--url_key", action="store", default="MOBILE_SHOP", help="Choose URL key")
 
 #If you are using via config.yaml file
 #def load_config():
