@@ -24,6 +24,7 @@ pipeline {
             steps {
                 // Write Allure *results* to allure-results (not allure-report)
                 bat 'python -m pytest --alluredir=allure-results'
+                bat 'python pytest -m smoke --url_key=GREENKART --alluredir=allure-results'
             }
         }
 
