@@ -23,7 +23,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 // Write Allure *results* to allure-results (not allure-report)
-                //bat 'python -m pytest --alluredir=allure-results'
+                bat 'python -m pytest --alluredir=allure-results'
                 //bat 'python pytest --url_key=MOBILE_SHOP --alluredir=allure-results'
                 bat 'python pytest test_sortingTables.py --url_key=GREENKART --alluredir=allure-results'
             }
