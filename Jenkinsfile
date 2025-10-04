@@ -15,7 +15,8 @@ pipeline {
             steps {
                 // ensure pip installs into the same python used by Jenkins agent
                 bat 'python -m pip install --upgrade pip'
-                bat 'python -m pip install -r requirements.txt || python -m pip install pytest allure-pytest'
+                bat 'python -m pip install -r requirements.txt'
+                //python -m pip install pytest allure-pytest
             }
         }
 
