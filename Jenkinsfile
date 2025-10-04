@@ -27,7 +27,7 @@ pipeline {
                 bat 'pytest -n 2 --url_key=MOBILE_SHOP --alluredir=allure-results'
                 //bat 'python -m pytest --alluredir=allure-results'
                 //bat 'python pytest --url_key=MOBILE_SHOP --alluredir=allure-results'
-                //bat 'python pytest test_sortingTables.py --url_key=GREENKART --alluredir=allure-results'
+                //bat 'python pytest --url_key=GREENKART --alluredir=allure-results'
             }
         }
 
