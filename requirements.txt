@@ -1,0 +1,9 @@
+# Core Python Testing Stack
+selenium==4.36.0
+pytest==8.4.2
+
+# Parallel Execution
+pytest-xdist==3.8.0
+
+# Allure Reporting
+allure-pytest==2.15.0
