@@ -22,7 +22,6 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                dir('D:\\Projects\\Python_Selenium'){
                 // Write Allure *results* to allure-results (not allure-report)
                 bat 'python -m pytest tests/test_sortingTables.py --url_key=GREENKART --browser_name=chrome --alluredir=allure-results'
                 //bat 'python -m pytest --alluredir=allure-results'
