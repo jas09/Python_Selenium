@@ -24,7 +24,8 @@ pipeline {
             steps {
                 // Write Allure *results* to allure-results (not allure-report)
                 //pytest -n 2 smoke --browser_name Firefox --html=reports/report.html
-                bat 'pytest -n 2 --url_key=MOBILE_SHOP --alluredir=allure-results'
+                //bat 'pytest -n 2 --url_key=MOBILE_SHOP --alluredir=allure-results'
+                bat 'python -m pytest -n 2 tests/test_sortingTables.py --url_key=GREENKART --alluredir=allure-results'
                 //bat 'python -m pytest --alluredir=allure-results'
                 //bat 'python pytest --url_key=MOBILE_SHOP --alluredir=allure-results'
                 //bat 'python pytest --url_key=GREENKART --alluredir=allure-results'
