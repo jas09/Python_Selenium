@@ -3,7 +3,7 @@ import pytest
 
 from pageObjects.login import LoginPage
 
-test_data_path = 'Data/test_e2eTestFramework.json'
+test_data_path = '../Data/test_e2eTestFramework.json'
 with open(test_data_path) as f:
     test_data = json.load(f)
     test_dataList = test_data["data"]
