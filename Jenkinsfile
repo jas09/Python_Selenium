@@ -29,9 +29,6 @@ pipeline {
                 //bat 'python -m pytest -n 2 tests/test_sortingTables.py --url_key=GREENKART --alluredir=allure-results'
                 bat 'python -m pytest tests/test_sortingTables.py --url_key=GREENKART --browser_name=chrome --alluredir=allure-results'
                 //bat 'python -m pytest --alluredir=allure-results'
-                //bat 'python pytest --url_key=MOBILE_SHOP --alluredir=allure-results'
-                //bat 'python pytest --url_key=GREENKART --alluredir=allure-results'
-                }
             }
         }
 
