@@ -22,6 +22,7 @@ pipeline {
 
         stage('Build & Test') {
             steps {
+                dir('D:\\Projects\\Python_Selenium'){
                 // Write Allure *results* to allure-results (not allure-report)
                 //pytest -n 2 smoke --browser_name Firefox --html=reports/report.html
                 //bat 'pytest -n 2 --url_key=MOBILE_SHOP --alluredir=allure-results'
