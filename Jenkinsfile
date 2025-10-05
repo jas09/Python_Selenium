@@ -22,6 +22,9 @@ pipeline {
 
         stage('Build & Test') {
             steps {
+                bat 'echo Current Directory: %cd%'
+                bat 'dir /b'
+                // explicitly run tests from the tests folder
                 // Write Allure *results* to allure-results (not allure-report)
                 // Run your tests and generate Allure results
                 //bat 'python -m pytest --alluredir=allure-results --url_key=GREENKART --browser_name=chrome'
