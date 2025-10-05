@@ -23,7 +23,8 @@ pipeline {
         stage('Build & Test') {
             steps {
                 bat 'echo Current Directory: %cd%'
-                bat 'dir /tests'
+                bat 'dir' // list workspace root
+                bat 'dir tests' // confirm tests folder exists
                 // explicitly run tests from the tests folder
                 // Write Allure *results* to allure-results (not allure-report)
                 // Run your tests and generate Allure results
