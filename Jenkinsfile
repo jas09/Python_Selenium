@@ -24,8 +24,9 @@ pipeline {
             steps {
                 // Write Allure *results* to allure-results (not allure-report)
                 // Run your tests and generate Allure results
-                bat 'python -m pytest --alluredir=allure-results --url_key=GREENKART --browser_name=chrome'
-                //bat 'python -m pytest --alluredir=allure-results'
+                //bat 'python -m pytest --alluredir=allure-results --url_key=GREENKART --browser_name=chrome'
+                //bat 'python -m pytest --alluredir=allure-results --url_key=MOBILE_SHOP --browser_name=chrome'
+                bat 'python -m pytest --alluredir=allure-results'
             }
         }
 
