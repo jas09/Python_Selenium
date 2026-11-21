@@ -76,14 +76,14 @@ pipeline {
                                 "${report.summary.skipped ?: 0}"
 
                         echo """
-==================================================
-BUILD SUMMARY
-==================================================
-Total Tests : ${env.TOTAL_TESTS}
-Passed      : ${env.PASSED_TESTS}
-Failed      : ${env.FAILED_TESTS}
-Skipped     : ${env.SKIPPED_TESTS}
-==================================================
+=========================
+TEST EXECUTION SUMMARY
+=========================
+Total   : ${env.TOTAL_TESTS}
+Passed  : ${env.PASSED_TESTS}
+Failed  : ${env.FAILED_TESTS}
+Skipped : ${env.SKIPPED_TESTS}
+=========================
 """
                     }
                 }
