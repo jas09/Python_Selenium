@@ -29,7 +29,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 //bat 'python -m pytest --alluredir=allure-results --browser_name=chrome --url_key=MOBILE_SHOP --headless'
-                bat 'python -m pytest tests --alluredir=allure-results -v'
+                bat 'python -m pytest -n 2 --alluredir=allure-results -v'
             }
         }
     }
