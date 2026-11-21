@@ -26,6 +26,7 @@ pipeline {
                     if (matcher.find()) {
                         env.JIRA_ISSUE = matcher.group(1)
                         echo "Jira Issue Found: ${env.JIRA_ISSUE}"
+                        echo "Extracted Jira Issue = ${env.JIRA_ISSUE}"
                     } else {
                         error("No Jira issue key found in commit message.")
                     }
