@@ -98,10 +98,10 @@ Skipped     : ${env.SKIPPED_TESTS}
             jiraSendBuildInfo(site: "${JIRA_SITE}")
         }
 
-        success {
-            script {
-                def jiraComment = """
-Build #${env.BUILD_NUMBER} Completed Successfully
+            archiveArtifacts(
+                artifacts: 'allure-results/**/*',
+                allowEmptyArchive: true
+            )
 
             echo """
 ====================================
