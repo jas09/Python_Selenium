@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        JIRA_SITE = 'azharullamohammed2.atlassian.net'
+    }
+
     stages {
 
         stage('Checkout') {
