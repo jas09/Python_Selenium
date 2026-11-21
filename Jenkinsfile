@@ -32,5 +32,10 @@ pipeline {
                 results: [[path: 'allure-results']]
             ])
         }
+
+        Success {jiraSendBuildInfo site: 'azharullamohammed2.atlassian.net'
+                echo "Build info sent to jira"}
+        failure {jiraSendBuildInfo site: 'azharullamohammed2.atlassian.net'
+                echo "Failed build info sent to Jira"}
     }
 }
