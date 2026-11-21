@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        echo "Extracted Jira Issue = ${env.JIRA_ISSUE}"
+
         stage('Install Dependencies') {
             steps {
                 bat 'python -m pip install --upgrade pip'
