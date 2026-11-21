@@ -15,25 +15,6 @@ pipeline {
             }
         }
 
-        stage('Extract Jira Key') {
-            steps {
-                script {
-                    def commitMessage = bat(script: 'git log -1 --pretty^=%%B',returnStdout: true).trim()
-
-                    echo "Commit Message: ${commitMessage}"
-                    def matcher = commitMessage =~ /([A-Z]+-\d+)/
-
-                    if (matcher.find()) {
-                        env.JIRA_ISSUE = matcher.group(1)
-                        echo "Jira Issue Found: ${env.JIRA_ISSUE}"
-                        echo "Extracted Jira Issue = ${env.JIRA_ISSUE}"
-                    } else {
-                        error("No Jira issue key found in commit message.")
-                    }
-                }
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'python -m pip install --upgrade pip'
