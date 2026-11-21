@@ -114,13 +114,7 @@ ${env.BUILD_URL}
 Allure:
 ${env.BUILD_URL}allure
 """
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'jira-api-creds',
-                        usernameVariable: 'JIRA_USER',
-                        passwordVariable: 'JIRA_TOKEN'
-                    )
-                ]) {
+        }
 
         success {
 
