@@ -138,11 +138,14 @@ ${jiraComment}
 '@
                     } | ConvertTo-Json
 
-            jiraSendBuildInfo(
-                site: "${JIRA_SITE}"
-            )
-
-            echo "Build info sent to Jira"
+                    Invoke-RestMethod `
+                      -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}/comment" `
+                      -Method POST `
+                      -Headers \$headers `
+                      -Body \$body
+                    """
+                }
+            }
         }
 
         failure {
