@@ -150,9 +150,41 @@ ${jiraComment}
 
         failure {
 
-            jiraSendBuildInfo(
-                site: "${JIRA_SITE}"
-            )
+            script {
+
+                def jiraComment = """
+Build #${env.BUILD_NUMBER} Failed
+
+✅ Passed : ${env.PASSED_TESTS}
+❌ Failed : ${env.FAILED_TESTS}
+⏭ Skipped : ${env.SKIPPED_TESTS}
+📊 Total  : ${env.TOTAL_TESTS}
+
+Jenkins:
+${env.BUILD_URL}
+
+Allure:
+${env.BUILD_URL}allure
+"""
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'jira-api-creds',
+                        usernameVariable: 'JIRA_USER',
+                        passwordVariable: 'JIRA_TOKEN'
+                    )
+                ]) {
+
+                    powershell """
+                    \$pair = "\$env:JIRA_USER:\$env:JIRA_TOKEN"
+                    \$bytes = [System.Text.Encoding]::UTF8.GetBytes(\$pair)
+                    \$base64 = [System.Convert]::ToBase64String(\$bytes)
+
+                    \$headers = @{
+                        Authorization = "Basic \$base64"
+                        Accept = "application/json"
+                        "Content-Type" = "application/json"
+                    }
 
             echo "Failed build info sent to Jira"
         }
