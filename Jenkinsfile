@@ -18,6 +18,14 @@ pipeline {
             }
         }
 
+        stage('Debug') {
+            steps {
+                bat 'dir'
+                bat 'dir pageObjects'
+                bat 'dir Utilities'
+            }
+        }
+
         stage('Run Tests') {
             steps {
                 //bat 'python -m pytest --alluredir=allure-results --browser_name=chrome --url_key=MOBILE_SHOP --headless'
