@@ -59,6 +59,7 @@ pipeline {
         stage('Read Test Metrics') {
             steps {
                 script {
+
                     if (fileExists('report.json')) {
 
                         def report = readJSON file: 'report.json'
