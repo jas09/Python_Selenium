@@ -20,8 +20,46 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                //bat 'python -m pytest --alluredir=allure-results --browser_name=chrome --url_key=MOBILE_SHOP --headless'
-                bat 'python -m pytest -n 3 --alluredir=allure-results --headless -v'
+
+                bat '''
+                python -m pytest ^
+                -n 3 ^
+                --browser_name=chrome ^
+                --url_key=MOBILE_SHOP ^
+                --headless ^
+                --alluredir=allure-results ^
+                --json-report ^
+                --json-report-file=report.json ^
+                -v
+                '''
+            }
+        }
+
+        stage('Read Test Metrics') {
+            steps {
+                script {
+
+                    if (fileExists('report.json')) {
+
+                        def report = readJSON file: 'report.json'
+
+                        env.TOTAL_TESTS  = "${report.summary.total ?: 0}"
+                        env.PASSED_TESTS = "${report.summary.passed ?: 0}"
+                        env.FAILED_TESTS = "${report.summary.failed ?: 0}"
+                        env.SKIPPED_TESTS = "${report.summary.skipped ?: 0}"
+
+                        echo """
+=========================
+TEST EXECUTION SUMMARY
+=========================
+Total   : ${env.TOTAL_TESTS}
+Passed  : ${env.PASSED_TESTS}
+Failed  : ${env.FAILED_TESTS}
+Skipped : ${env.SKIPPED_TESTS}
+=========================
+"""
+                    }
+                }
             }
         }
     }
