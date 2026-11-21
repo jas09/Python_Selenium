@@ -132,7 +132,11 @@ ${env.BUILD_URL}allure
                         "Content-Type" = "application/json"
                     }
 
-        success {
+                    \$body = @{
+                        body = @'
+${jiraComment}
+'@
+                    } | ConvertTo-Json
 
             jiraSendBuildInfo(
                 site: "${JIRA_SITE}"
