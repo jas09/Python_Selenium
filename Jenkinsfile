@@ -28,8 +28,6 @@ pipeline {
                 bat '''
                 python -m pytest ^
                 -n 3 ^
-                --browser_name=chrome ^
-                --url_key=MOBILE_SHOP ^
                 --headless ^
                 --alluredir=allure-results ^
                 --json-report ^
