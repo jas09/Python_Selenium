@@ -32,7 +32,36 @@ pipeline {
                 results: [[path: 'allure-results']]
             ])
 
-            archiveArtifacts(artifacts: 'allure-results/**/*', allowEmptyArchive: true)
+            archiveArtifacts(
+                artifacts: 'allure-results/**/*',
+                allowEmptyArchive: true
+            )
+
+            echo """
+====================================
+BUILD SUMMARY
+====================================
+Total Tests : ${env.TOTAL_TESTS}
+Passed      : ${env.PASSED_TESTS}
+Failed      : ${env.FAILED_TESTS}
+Skipped     : ${env.SKIPPED_TESTS}
+====================================
+
+Jenkins:
+${env.BUILD_URL}
+
+Allure:
+${env.BUILD_URL}allure
+"""
+        }
+
+        success {
+
+            jiraSendBuildInfo(
+                site: "${JIRA_SITE}"
+            )
+
+            echo "Build info sent to Jira"
         }
 
         failure {
