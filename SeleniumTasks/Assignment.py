@@ -17,6 +17,7 @@ count = len(results)
 assert count ==3
 for result in results:
     actualList.append(result.find_element(By.XPATH,"h4").text)
+    print(actualList)
     result.find_element(By.XPATH,"div/button").click()
 assert expectedList == actualList
 driver.find_element(By.CSS_SELECTOR,"img[alt='Cart']").click()

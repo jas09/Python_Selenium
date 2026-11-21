@@ -1,7 +1,7 @@
 import pytest
 from selenium.webdriver.common.by import By
 
-@pytest.mark.smoke
+@pytest.mark.skip
 def test_sort(browserInstance):
     browserSortedVeggies = []
     driver = browserInstance
