@@ -31,6 +31,8 @@ pipeline {
             allure([
                 results: [[path: 'allure-results']]
             ])
+
+            archiveArtifacts(artifacts: 'allure-results/**/*', allowEmptyArchive: true)
         }
 
         Success {jiraSendBuildInfo site: 'azharullamohammed2.atlassian.net'
