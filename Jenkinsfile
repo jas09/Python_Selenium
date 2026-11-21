@@ -18,7 +18,7 @@ pipeline {
         stage('Extract Jira Key') {
             steps {
                 script {
-                    def commitMessage = bat(script: 'git log -1 --pretty=%%B',returnStdout: true).trim()
+                    def commitMessage = bat(script: 'git log -1 --pretty^=%%B',returnStdout: true).trim()
 
                     echo "Commit Message: ${commitMessage}"
                     def matcher = commitMessage =~ /([A-Z]+-\d+)/
