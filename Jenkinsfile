@@ -152,32 +152,8 @@ Write-Host "azharullamohammed2.atlassian.net"
 Write-Host "JIRA_ISSUE:"
 Write-Host "SCRUM-5"
 
-            \$body = @{
-                body = @{
-                    type = "doc"
-                    version = 1
-                    content = @(
-                        @{
-                            type = "paragraph"
-                            content = @(
-                                @{
-                                    type = "text"
-                                    text = @'
-${jiraComment}
-'@
-                                }
-                            )
-                        }
-                    )
-                }
-            } | ConvertTo-Json -Depth 20
-
-            Write-Host "REQUEST BODY:"
-            Write-Host \$body
-
-            Write-Host "=========================================="
-            Write-Host "DEBUG END"
-            Write-Host "=========================================="
+Write-Host "Testing Jira GET..."
+Write-Host "=========================================="
 
             Invoke-RestMethod `
             -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}" `
