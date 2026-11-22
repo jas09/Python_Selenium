@@ -187,7 +187,7 @@ ${env.BUILD_URL}allure
                                     content = @(
                                         @{
                                             type = "text"
-                                            text = "Jenkins Build Test"
+                                            text = $commentText
                                         }
                                     )
                                 }
