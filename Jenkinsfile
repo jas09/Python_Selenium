@@ -202,7 +202,7 @@ ${env.BUILD_URL}allure
 
                     Write-Host "Jira comment posted successfully"
 
-                    '''
+                    '''}
                 }
             }
         }
