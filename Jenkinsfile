@@ -206,7 +206,7 @@ ${env.BUILD_URL}allure
                     $issueKey = $env:JIRA_ISSUE
 
                     Invoke-RestMethod `
-                        -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/$issueKey/comment" `
+                        -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}/comment" `
                         -Method POST `
                         -Headers $headers `
                         -Body $body
