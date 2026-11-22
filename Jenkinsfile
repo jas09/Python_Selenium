@@ -172,7 +172,7 @@ ${env.BUILD_URL}allure
 
                     powershell '''
 
-$pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
+                    $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
 $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
 $base64 = [System.Convert]::ToBase64String($bytes)
