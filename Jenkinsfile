@@ -194,8 +194,6 @@ ${env.BUILD_URL}allure
                         }
                     } | ConvertTo-Json -Depth 20
 
-                    $issueKey = $env:JIRA_ISSUE
-
                     Invoke-RestMethod `
                         -Uri "https://$site/rest/api/3/issue/$issueKey/comment" `
                         -Method POST `
