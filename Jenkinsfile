@@ -106,9 +106,34 @@ ${env.BUILD_URL}allure
 
         failure {
 
-            jiraSendBuildInfo(
-                site: "${JIRA_SITE}"
-            )
+            Write-Host "JIRA_SITE:"
+            Write-Host "${JIRA_SITE}"
+
+            Write-Host "JIRA_ISSUE:"
+            Write-Host "${env.JIRA_ISSUE}"
+
+            Write-Host "TARGET URL:"
+            Write-Host "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}/comment"
+
+            \$body = @{
+                body = @{
+                    type = "doc"
+                    version = 1
+                    content = @(
+                        @{
+                            type = "paragraph"
+                            content = @(
+                                @{
+                                    type = "text"
+                                    text = @'
+${jiraComment}
+'@
+                                }
+                            )
+                        }
+                    )
+                }
+            } | ConvertTo-Json -Depth 20
 
             Write-Host "REQUEST BODY:"
             Write-Host \$body
