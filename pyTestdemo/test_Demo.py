@@ -1,6 +1,6 @@
 import pytest
 
-@pytest.mark.xfail
+@pytest.mark.smoke
 def test_firstProgram():
     print("This is a smoke Test 1")
 @pytest.mark.smoke
