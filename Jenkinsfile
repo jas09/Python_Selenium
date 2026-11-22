@@ -48,6 +48,7 @@ pipeline {
                     ).trim()
 
                     echo "Commit Message: ${commitMessage}"
+
                     def matcher = commitMessage =~ /([A-Z]+-\d+)/
 
                     if (matcher.find()) {
