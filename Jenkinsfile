@@ -146,8 +146,8 @@ Write-Host "=========================================="
 Write-Host "DEBUG START"
 Write-Host "=========================================="
 
-            Write-Host "JIRA_SITE:"
-            Write-Host "${JIRA_SITE}"
+Write-Host "JIRA_SITE:"
+Write-Host "azharullamohammed2.atlassian.net"
 
             Write-Host "JIRA_ISSUE:"
             Write-Host "${env.JIRA_ISSUE}"
