@@ -171,7 +171,8 @@ ${env.BUILD_URL}allure
                 ]) {
                     withEnv(["CURRENT_JIRA=${env.JIRA_ISSUE}","CURRENT_SITE=${JIRA_SITE}"])
                     powershell '''
-
+                    $issueKey = $env:CURRENT_JIRA
+                    $site = $env:CURRENT_SITE
                     $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
                     $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
