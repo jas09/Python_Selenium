@@ -183,18 +183,7 @@ ${env.BUILD_URL}allure
                         "Content-Type" = "application/json"
                     }
 
-Write-Host "=========================================="
-Write-Host "DEBUG START"
-Write-Host "=========================================="
-
-Write-Host "JIRA_SITE:"
-Write-Host "azharullamohammed2.atlassian.net"
-
-Write-Host "JIRA_ISSUE:"
-Write-Host "SCRUM-5"
-
-Write-Host "Testing Jira GET..."
-Write-Host "=========================================="
+                    $commentText = Get-Content jira-comment.txt -Raw
 
 $body = @{
     body = @{
