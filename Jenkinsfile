@@ -145,10 +145,10 @@ Skipped     : ${env.SKIPPED_TESTS}
                 def jiraComment = """
 Build #${env.BUILD_NUMBER} Completed Successfully
 
-Passed : ${env.PASSED_TESTS}
-Failed : ${env.FAILED_TESTS}
-Skipped : ${env.SKIPPED_TESTS}
-Total   : ${env.TOTAL_TESTS}
+✅ Passed : ${env.PASSED_TESTS}
+❌ Failed : ${env.FAILED_TESTS}
+⏭ Skipped : ${env.SKIPPED_TESTS}
+📊 Total : ${env.TOTAL_TESTS}
 
 Jenkins:
 ${env.BUILD_URL}
