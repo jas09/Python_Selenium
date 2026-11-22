@@ -160,7 +160,13 @@ $response = Invoke-RestMethod `
     -Method GET `
     -Headers $headers
 
-            """
+Write-Host "SUCCESS"
+Write-Host "Issue Key:"
+Write-Host $response.key
+
+Write-Host "Issue ID:"
+Write-Host $response.id
+'''
         }
     }
 }
