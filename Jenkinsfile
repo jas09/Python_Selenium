@@ -138,11 +138,10 @@ Skipped     : ${env.SKIPPED_TESTS}
             )
         }
 
-        success {
 
-            script {
-
-                def jiraComment = """
+success {
+    script {
+        def jiraComment = """\
 Build #${env.BUILD_NUMBER} Completed Successfully
 
 ✅ Passed : ${env.PASSED_TESTS}
@@ -156,57 +155,120 @@ ${env.BUILD_URL}
 Allure:
 ${env.BUILD_URL}allure
 """
-                writeFile(file: 'jira-comment.txt',text: jiraComment)
-                withCredentials([usernamePassword(credentialsId: 'jira-api-creds',usernameVariable: 'JIRA_USER',passwordVariable: 'JIRA_TOKEN')])
-                {
-                withEnv(["CURRENT_JIRA=${env.JIRA_ISSUE}","CURRENT_SITE=${JIRA_SITE}"])
-                {
-                    powershell '''
-                    $issueKey = $env:CURRENT_JIRA
-                    $site = $env:CURRENT_SITE
-                    $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
+        writeFile(
+            file: 'jira-comment.txt',
+            text: jiraComment,
+            encoding: 'UTF-8'
+        )
+
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'jira-api-creds',
+                usernameVariable: 'JIRA_USER',
+                passwordVariable: 'JIRA_TOKEN'
+            )
+        ]) {
+            withEnv([
+                "CURRENT_JIRA=${env.JIRA_ISSUE}",
+                "CURRENT_SITE=${JIRA_SITE}"
+            ]) {
+                powershell '''
+                    $ErrorActionPreference = "Stop"
+
+                    $issueKey = $env:CURRENT_JIRA
+                    $site = $env:CURRENT_SITE.Trim()
+
+                    Write-Host "Preparing Jira comment for $issueKey"
+
+                    # Authentication
+                    $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
                     $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
                     $base64 = [System.Convert]::ToBase64String($bytes)
 
                     $headers = @{
                         Authorization = "Basic $base64"
-                        Accept = "application/json"
-                        "Content-Type" = "application/json"
+                        Accept       = "application/json"
                     }
 
-                    $commentText = Get-Content jira-comment.txt -Raw
+                    # Read comment using UTF-8
+                    $commentText = Get-Content `
+                        -Path "jira-comment.txt" `
+                        -Raw `
+                        -Encoding UTF8
 
-                    $body = @{
-                        body = @{
-                            type = "doc"
-                            version = 1
-                            content = @(
+                    # Convert multiline comment into ADF paragraphs
+                    $lines = $commentText -split "\\r?\\n"
+
+                    $paragraphs = @(
+                        foreach ($line in $lines) {
+                            if ([string]::IsNullOrWhiteSpace($line)) {
+                                @{
+                                    type    = "paragraph"
+                                    content = @()
+                                }
+                            }
+                            else {
                                 @{
                                     type = "paragraph"
                                     content = @(
                                         @{
                                             type = "text"
-                                            text = $commentText
+                                            text = $line
                                         }
                                     )
                                 }
-                            )
+                            }
                         }
-                    } | ConvertTo-Json -Depth 20
+                    )
 
-                    Invoke-RestMethod `
-                        -Uri "https://$site/rest/api/3/issue/$issueKey/comment" `
-                        -Method POST `
-                        -Headers $headers `
-                        -Body $body
+                    # Jira Atlassian Document Format
+                    $bodyObject = @{
+                        body = @{
+                            type    = "doc"
+                            version = 1
+                            content = $paragraphs
+                        }
+                    }
 
-                    Write-Host "Jira comment posted successfully"
+                    $jsonBody = $bodyObject | ConvertTo-Json -Depth 20
 
-                    '''}
-                }
+                    # Explicit UTF-8 request body
+                    $utf8Body = [System.Text.Encoding]::UTF8.GetBytes($jsonBody)
+
+                    $uri = "https://$site/rest/api/3/issue/$issueKey/comment"
+
+                    Write-Host "Posting comment to Jira..."
+                    Write-Host "Payload size: $($utf8Body.Length) bytes"
+
+                    try {
+                        $response = Invoke-RestMethod `
+                            -Uri $uri `
+                            -Method POST `
+                            -Headers $headers `
+                            -ContentType "application/json; charset=utf-8" `
+                            -Body $utf8Body `
+                            -TimeoutSec 30
+
+                        Write-Host "Jira comment posted successfully."
+                        Write-Host "Comment ID: $($response.id)"
+                    }
+                    catch {
+                        Write-Host "ERROR: Jira comment posting failed."
+                        Write-Host "Error details: $($_.Exception.Message)"
+
+                        if ($_.Exception.Response) {
+                            Write-Host "HTTP Status: $($_.Exception.Response.StatusCode)"
+                        }
+
+                        throw
+                    }
+                '''
             }
         }
+    }
+}
+
 
         failure {
 
