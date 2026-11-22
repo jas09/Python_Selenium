@@ -104,7 +104,9 @@ ${env.BUILD_URL}allure
             echo "Build info sent to Jira"
         }
 
-        failure {
+            Write-Host "=========================================="
+            Write-Host "DEBUG START"
+            Write-Host "=========================================="
 
             Write-Host "JIRA_SITE:"
             Write-Host "${JIRA_SITE}"
