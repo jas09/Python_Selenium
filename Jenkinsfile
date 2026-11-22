@@ -155,6 +155,27 @@ Write-Host "SCRUM-5"
 Write-Host "Testing Jira GET..."
 Write-Host "=========================================="
 
+$body = @{
+    body = @{
+        type = "doc"
+        version = 1
+        content = @(
+            @{
+                type = "paragraph"
+                content = @(
+                    @{
+                        type = "text"
+                        text = "Comment from Jenkins Build #${env.BUILD_NUMBER}"
+                    }
+                )
+            }
+        )
+    }
+} | ConvertTo-Json -Depth 20
+
+Write-Host "POST BODY:"
+Write-Host $body
+
 $response = Invoke-RestMethod `
     -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5" `
     -Method GET `
