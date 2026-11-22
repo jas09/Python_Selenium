@@ -183,7 +183,7 @@ ${jiraComment}
             Invoke-RestMethod `
             -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}" `
             -Method GET `
-            -Headers $headers
+            -Headers \$headers
 
             """
         }
