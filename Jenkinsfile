@@ -149,11 +149,8 @@ Write-Host "=========================================="
 Write-Host "JIRA_SITE:"
 Write-Host "azharullamohammed2.atlassian.net"
 
-            Write-Host "JIRA_ISSUE:"
-            Write-Host "${env.JIRA_ISSUE}"
-
-            Write-Host "TARGET URL:"
-            Write-Host "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}/comment"
+Write-Host "JIRA_ISSUE:"
+Write-Host "SCRUM-5"
 
             \$body = @{
                 body = @{
