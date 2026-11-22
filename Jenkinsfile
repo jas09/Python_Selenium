@@ -174,8 +174,8 @@ ${env.BUILD_URL}allure
 
                     $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
-$bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
-$base64 = [System.Convert]::ToBase64String($bytes)
+                    $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
+                    $base64 = [System.Convert]::ToBase64String($bytes)
 
 $headers = @{
     Authorization = "Basic $base64"
