@@ -1,3 +1,26 @@
+// here is the production-ready Jenkins file that:
+// Extracts Jira issue from commit message
+// Runs Pytest
+// Generates Allure
+// Reads test metrics
+// Sends Build Info to Jira
+// Posts a Jira comment containing:
+// Passed
+// Failed
+// Skipped
+// Total
+// Jenkins URL
+// Allure URL
+//
+//
+// Required Jenkins Plugins:
+// Atlassian Jira Software Cloud
+// Allure Jenkins Plugin
+// Pipeline Utility Steps
+//
+// Required Python Package:
+// pip install pytest-json-report
+
 pipeline {
     agent any
 
