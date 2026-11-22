@@ -203,8 +203,7 @@ ${env.BUILD_URL}allure
                         }
                     } | ConvertTo-Json -Depth 20
 
-Write-Host "POST BODY:"
-Write-Host $body
+                    $issueKey = $env:JIRA_ISSUE
 
 $response = Invoke-RestMethod `
     -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5/comment" `
