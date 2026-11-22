@@ -185,23 +185,23 @@ ${env.BUILD_URL}allure
 
                     $commentText = Get-Content jira-comment.txt -Raw
 
-$body = @{
-    body = @{
-        type = "doc"
-        version = 1
-        content = @(
-            @{
-                type = "paragraph"
-                content = @(
-                    @{
-                        type = "text"
-                        text = "Comment from Jenkins Build #${env.BUILD_NUMBER}"
-                    }
-                )
-            }
-        )
-    }
-} | ConvertTo-Json -Depth 20
+                    $body = @{
+                        body = @{
+                            type = "doc"
+                            version = 1
+                            content = @(
+                                @{
+                                    type = "paragraph"
+                                    content = @(
+                                        @{
+                                            type = "text"
+                                            text = $commentText
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    } | ConvertTo-Json -Depth 20
 
 Write-Host "POST BODY:"
 Write-Host $body
