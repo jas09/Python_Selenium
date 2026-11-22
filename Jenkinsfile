@@ -177,9 +177,10 @@ Write-Host "POST BODY:"
 Write-Host $body
 
 $response = Invoke-RestMethod `
-    -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5" `
-    -Method GET `
-    -Headers $headers
+    -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5/comment" `
+    -Method POST `
+    -Headers $headers `
+    -Body $body
 
 Write-Host "SUCCESS"
 Write-Host "Issue Key:"
