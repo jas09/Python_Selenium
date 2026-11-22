@@ -211,10 +211,19 @@ ${env.BUILD_URL}allure
                         -Headers $headers `
                         -Body $body
 
-Write-Host "COMMENT CREATED SUCCESSFULLY"
-'''
+                    Write-Host "Jira comment posted successfully"
+
+                    '''
+                }
+            }
         }
-    }
-}
+
+        failure {
+
+            script {
+
+                echo "Build failed. Build information sent to Jira."
+            }
+        }
     }
 }
