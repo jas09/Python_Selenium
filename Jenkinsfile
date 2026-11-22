@@ -182,12 +182,7 @@ $response = Invoke-RestMethod `
     -Headers $headers `
     -Body $body
 
-Write-Host "SUCCESS"
-Write-Host "Issue Key:"
-Write-Host $response.key
-
-Write-Host "Issue ID:"
-Write-Host $response.id
+Write-Host "COMMENT CREATED SUCCESSFULLY"
 '''
         }
     }
