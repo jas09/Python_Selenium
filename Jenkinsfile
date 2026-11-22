@@ -100,6 +100,12 @@ ${env.BUILD_URL}allure
             jiraSendBuildInfo(
                 site: "${JIRA_SITE}"
             )
+        ]) {
+
+            echo "JIRA_SITE = ${JIRA_SITE}"
+            echo "JIRA_ISSUE = ${env.JIRA_ISSUE}"
+
+            powershell """
 
             \$pair = "\$env:JIRA_USER:\$env:JIRA_TOKEN"
             \$bytes = [System.Text.Encoding]::UTF8.GetBytes(\$pair)
