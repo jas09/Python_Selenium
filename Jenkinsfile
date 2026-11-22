@@ -169,7 +169,7 @@ ${env.BUILD_URL}allure
                         passwordVariable: 'JIRA_TOKEN'
                     )
                 ]) {
-
+                    withEnv(["CURRENT_JIRA=${env.JIRA_ISSUE}","CURRENT_SITE=${JIRA_SITE}"])
                     powershell '''
 
                     $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
