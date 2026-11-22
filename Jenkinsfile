@@ -181,10 +181,9 @@ ${jiraComment}
             Write-Host "=========================================="
 
             Invoke-RestMethod `
-                -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}/comment" `
-                -Method POST `
-                -Headers \$headers `
-                -Body \$body
+            -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}" `
+            -Method GET `
+            -Headers $headers
 
             """
         }
