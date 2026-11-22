@@ -96,7 +96,7 @@ pipeline {
                             "${report.summary.total ?: 0}"
 
                         env.PASSED_TESTS =
-                                "${report.summary.passed ?: 0}"
+                            "${report.summary.passed ?: 0}"
 
                         env.FAILED_TESTS =
                                 "${report.summary.failed ?: 0}"
