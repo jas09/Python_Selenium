@@ -205,11 +205,11 @@ ${env.BUILD_URL}allure
 
                     $issueKey = $env:JIRA_ISSUE
 
-$response = Invoke-RestMethod `
-    -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5/comment" `
-    -Method POST `
-    -Headers $headers `
-    -Body $body
+                    Invoke-RestMethod `
+                        -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/$issueKey/comment" `
+                        -Method POST `
+                        -Headers $headers `
+                        -Body $body
 
 Write-Host "COMMENT CREATED SUCCESSFULLY"
 '''
