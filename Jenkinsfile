@@ -177,11 +177,11 @@ ${env.BUILD_URL}allure
                     $bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
                     $base64 = [System.Convert]::ToBase64String($bytes)
 
-$headers = @{
-    Authorization = "Basic $base64"
-    Accept = "application/json"
-    "Content-Type" = "application/json"
-}
+                    $headers = @{
+                        Authorization = "Basic $base64"
+                        Accept = "application/json"
+                        "Content-Type" = "application/json"
+                    }
 
 Write-Host "=========================================="
 Write-Host "DEBUG START"
