@@ -170,12 +170,7 @@ ${env.BUILD_URL}allure
                     )
                 ]) {
 
-            echo "JIRA_SITE = ${JIRA_SITE}"
-            echo "JIRA_ISSUE = ${env.JIRA_ISSUE}"
-
-            powershell '''
-Write-Host "USER:"
-Write-Host $env:JIRA_USER
+                    powershell '''
 
 $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
