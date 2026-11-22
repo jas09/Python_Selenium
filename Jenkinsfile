@@ -80,7 +80,7 @@ Skipped : ${env.SKIPPED_TESTS}
             echo """
 ====================================
 BUILD SUMMARY
-====================================
+==================================================
 Total Tests : ${env.TOTAL_TESTS}
 Passed      : ${env.PASSED_TESTS}
 Failed      : ${env.FAILED_TESTS}
