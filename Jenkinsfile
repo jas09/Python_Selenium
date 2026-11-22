@@ -127,12 +127,11 @@ ${env.BUILD_URL}allure
             echo "JIRA_SITE = ${JIRA_SITE}"
             echo "JIRA_ISSUE = ${env.JIRA_ISSUE}"
 
-            powershell """
-            Write-Host "USER:"
-            Write-Host $env:JIRA_USER
-            \$pair = "\$env:JIRA_USER:\$env:JIRA_TOKEN"
-            \$bytes = [System.Text.Encoding]::UTF8.GetBytes(\$pair)
-            \$base64 = [System.Convert]::ToBase64String(\$bytes)
+            powershell '''
+Write-Host "USER:"
+Write-Host $env:JIRA_USER
+
+$pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
             \$headers = @{
                 Authorization = "Basic \$base64"
