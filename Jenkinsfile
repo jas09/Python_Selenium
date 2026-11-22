@@ -142,9 +142,9 @@ $headers = @{
     "Content-Type" = "application/json"
 }
 
-            Write-Host "=========================================="
-            Write-Host "DEBUG START"
-            Write-Host "=========================================="
+Write-Host "=========================================="
+Write-Host "DEBUG START"
+Write-Host "=========================================="
 
             Write-Host "JIRA_SITE:"
             Write-Host "${JIRA_SITE}"
