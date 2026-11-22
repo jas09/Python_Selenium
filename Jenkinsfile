@@ -157,13 +157,18 @@ Allure:
 ${env.BUILD_URL}allure
 """
 
-        withCredentials([
-            usernamePassword(
-                credentialsId: 'jira-api-creds',
-                usernameVariable: 'JIRA_USER',
-                passwordVariable: 'JIRA_TOKEN'
-            )
-        ]) {
+                writeFile(
+                    file: 'jira-comment.txt',
+                    text: jiraComment
+                )
+
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'jira-api-creds',
+                        usernameVariable: 'JIRA_USER',
+                        passwordVariable: 'JIRA_TOKEN'
+                    )
+                ]) {
 
             echo "JIRA_SITE = ${JIRA_SITE}"
             echo "JIRA_ISSUE = ${env.JIRA_ISSUE}"
