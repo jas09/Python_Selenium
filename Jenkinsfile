@@ -156,20 +156,10 @@ ${env.BUILD_URL}
 Allure:
 ${env.BUILD_URL}allure
 """
-
-                writeFile(
-                    file: 'jira-comment.txt',
-                    text: jiraComment
-                )
-
-                withCredentials([
-                    usernamePassword(
-                        credentialsId: 'jira-api-creds',
-                        usernameVariable: 'JIRA_USER',
-                        passwordVariable: 'JIRA_TOKEN'
-                    )
-                ]) {
-                    withEnv(["CURRENT_JIRA=${env.JIRA_ISSUE}","CURRENT_SITE=${JIRA_SITE}"])
+                writeFile(file: 'jira-comment.txt',text: jiraComment)
+                withCredentials([usernamePassword(credentialsId: 'jira-api-creds',usernameVariable: 'JIRA_USER',passwordVariable: 'JIRA_TOKEN')])
+                withEnv(["CURRENT_JIRA=${env.JIRA_ISSUE}","CURRENT_SITE=${JIRA_SITE}"])
+                {
                     powershell '''
                     $issueKey = $env:CURRENT_JIRA
                     $site = $env:CURRENT_SITE
