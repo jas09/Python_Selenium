@@ -133,11 +133,14 @@ Write-Host $env:JIRA_USER
 
 $pair = $env:JIRA_USER + ":" + $env:JIRA_TOKEN
 
-            \$headers = @{
-                Authorization = "Basic \$base64"
-                Accept = "application/json"
-                "Content-Type" = "application/json"
-            }
+$bytes = [System.Text.Encoding]::UTF8.GetBytes($pair)
+$base64 = [System.Convert]::ToBase64String($bytes)
+
+$headers = @{
+    Authorization = "Basic $base64"
+    Accept = "application/json"
+    "Content-Type" = "application/json"
+}
 
             Write-Host "=========================================="
             Write-Host "DEBUG START"
