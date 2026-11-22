@@ -51,34 +51,7 @@ pipeline {
                         env.SKIPPED_TESTS = "${report.summary.skipped ?: 0}"
 
                         echo """
-=========================
-TEST EXECUTION SUMMARY
-=========================
-Total   : ${env.TOTAL_TESTS}
-Passed  : ${env.PASSED_TESTS}
-Failed  : ${env.FAILED_TESTS}
-Skipped : ${env.SKIPPED_TESTS}
-=========================
-"""
-                    }
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            allure([
-                results: [[path: 'allure-results']]
-            ])
-
-            archiveArtifacts(
-                artifacts: 'allure-results/**/*',
-                allowEmptyArchive: true
-            )
-
-            echo """
-====================================
+==================================================
 BUILD SUMMARY
 ==================================================
 Total Tests : ${env.TOTAL_TESTS}
