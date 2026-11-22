@@ -155,10 +155,10 @@ Write-Host "SCRUM-5"
 Write-Host "Testing Jira GET..."
 Write-Host "=========================================="
 
-            Invoke-RestMethod `
-            -Uri "https://${JIRA_SITE}/rest/api/3/issue/${env.JIRA_ISSUE}" `
-            -Method GET `
-            -Headers \$headers
+$response = Invoke-RestMethod `
+    -Uri "https://azharullamohammed2.atlassian.net/rest/api/3/issue/SCRUM-5" `
+    -Method GET `
+    -Headers $headers
 
             """
         }
