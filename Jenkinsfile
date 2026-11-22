@@ -46,7 +46,7 @@ pipeline {
 
                 bat '''
                 python -m pytest ^
-                -n 3 ^
+                -n 5 ^
                 --headless ^
                 --alluredir=allure-results ^
                 --json-report ^
