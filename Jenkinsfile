@@ -97,8 +97,23 @@ ${env.BUILD_URL}allure
 
         success {
 
-            jiraSendBuildInfo(
-                site: "${JIRA_SITE}"
+Passed : ${env.PASSED_TESTS}
+Failed : ${env.FAILED_TESTS}
+Skipped : ${env.SKIPPED_TESTS}
+Total   : ${env.TOTAL_TESTS}
+
+Jenkins:
+${env.BUILD_URL}
+
+Allure:
+${env.BUILD_URL}allure
+"""
+
+        withCredentials([
+            usernamePassword(
+                credentialsId: 'jira-api-creds',
+                usernameVariable: 'JIRA_USER',
+                passwordVariable: 'JIRA_TOKEN'
             )
         ]) {
 
