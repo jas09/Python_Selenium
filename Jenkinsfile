@@ -101,8 +101,15 @@ ${env.BUILD_URL}allure
                 site: "${JIRA_SITE}"
             )
 
-            echo "Build info sent to Jira"
-        }
+            \$pair = "\$env:JIRA_USER:\$env:JIRA_TOKEN"
+            \$bytes = [System.Text.Encoding]::UTF8.GetBytes(\$pair)
+            \$base64 = [System.Convert]::ToBase64String(\$bytes)
+
+            \$headers = @{
+                Authorization = "Basic \$base64"
+                Accept = "application/json"
+                "Content-Type" = "application/json"
+            }
 
             Write-Host "=========================================="
             Write-Host "DEBUG START"
