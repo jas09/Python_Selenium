@@ -93,6 +93,17 @@ ${env.BUILD_URL}
 Allure:
 ${env.BUILD_URL}allure
 """
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            allure([results: [[path: 'allure-results']]])
+            archiveArtifacts(artifacts: 'allure-results/**/*',allowEmptyArchive: true)
+            jiraSendBuildInfo(site: "${JIRA_SITE}")
         }
 
         success {
