@@ -102,7 +102,7 @@ pipeline {
                             "${report.summary.failed ?: 0}"
 
                         env.SKIPPED_TESTS =
-                                "${report.summary.skipped ?: 0}"
+                            "${report.summary.skipped ?: 0}"
 
                         echo """
 ==================================================
