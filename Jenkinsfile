@@ -96,6 +96,10 @@ ${env.BUILD_URL}allure
         }
 
         success {
+    script {
+
+        def jiraComment = """
+Build #${env.BUILD_NUMBER} Completed Successfully
 
 Passed : ${env.PASSED_TESTS}
 Failed : ${env.FAILED_TESTS}
