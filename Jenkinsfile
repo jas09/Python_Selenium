@@ -121,6 +121,7 @@ Skipped     : ${env.SKIPPED_TESTS}
     }
 
     post {
+
         always {
             allure([results: [[path: 'allure-results']]])
             archiveArtifacts(artifacts: 'allure-results/**/*',allowEmptyArchive: true)
