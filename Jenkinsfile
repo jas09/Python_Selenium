@@ -142,7 +142,7 @@ Skipped     : ${env.SKIPPED_TESTS}
 
             script {
 
-        def jiraComment = """
+                def jiraComment = """
 Build #${env.BUILD_NUMBER} Completed Successfully
 
 Passed : ${env.PASSED_TESTS}
