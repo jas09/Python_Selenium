@@ -93,7 +93,7 @@ pipeline {
                         def report = readJSON file: 'report.json'
 
                         env.TOTAL_TESTS =
-                                "${report.summary.total ?: 0}"
+                            "${report.summary.total ?: 0}"
 
                         env.PASSED_TESTS =
                                 "${report.summary.passed ?: 0}"
